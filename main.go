@@ -106,7 +106,6 @@ const (
 	CaloriesWeightMultiplier      = 0.035 // коэффициент для веса
 	CaloriesSpeedHeightMultiplier = 0.029 // коэффициент для роста
 	KmHInMsec                     = 0.278 // коэффициент для перевода км/ч в м/с
-	MinsInHour                    = 60    // число минут в часе
 )
 
 // Walking структура описывающая тренировку Ходьба
@@ -124,7 +123,7 @@ func (w Walking) Calories() float64 {
 	multiplier := CaloriesSpeedHeightMultiplier
 	return ((multiplier * w.Weight) +
 		((math.Pow(w.meanSpeed(), 2) / w.Height) * multiplier * w.Weight)) *
-		w.Duration.Hours() * MinsInHour
+		w.Duration.Hours() * MinInHours
 }
 
 // Константы для расчета потраченных килокалорий при плавании.
